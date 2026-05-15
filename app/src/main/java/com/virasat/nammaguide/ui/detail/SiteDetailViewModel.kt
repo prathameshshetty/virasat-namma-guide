@@ -28,6 +28,9 @@ class SiteDetailViewModel(app: Application) : AndroidViewModel(app) {
     private val _checkInState = MutableStateFlow<String>("")
     val checkInState: StateFlow<String> = _checkInState
 
+    private val _checkOutState = MutableStateFlow<String>("")
+    val checkOutState: StateFlow<String> = _checkOutState
+
     private val _aiAnswer = MutableStateFlow<String>("")
     val aiAnswer: StateFlow<String> = _aiAnswer
 
@@ -43,8 +46,8 @@ class SiteDetailViewModel(app: Application) : AndroidViewModel(app) {
                 if (site != null) {
                     currentSite = site
                     _site.value = UiState.Success(site)
-                    val desc = siteRepo.getOrFetchDescription(site, language)
-                    _description.value = desc
+                    // Only use cached description — never auto-call Gemini on page load
+                    _description.value = site.description
                 } else {
                     _site.value = UiState.Error("Site not found")
                 }
@@ -58,7 +61,7 @@ class SiteDetailViewModel(app: Application) : AndroidViewModel(app) {
         val site = currentSite ?: return
         viewModelScope.launch {
             _isLoadingAI.value = true
-            val answer = siteRepo.askGuide(site.id, site.nameEn, question, language)
+            val answer = siteRepo.askGuide(site.id, site.nameEn, site.dynasty, site.period, question, language)
             _aiAnswer.value = answer
             _isLoadingAI.value = false
         }
@@ -67,14 +70,8 @@ class SiteDetailViewModel(app: Application) : AndroidViewModel(app) {
     fun checkInGPS(lat: Double, lon: Double) {
         val site = currentSite ?: return
         viewModelScope.launch {
-            val dist = FloatArray(1)
-            android.location.Location.distanceBetween(lat, lon, site.latitude, site.longitude, dist)
-            if (dist[0] <= 200f) {
-                val success = passportRepo.checkIn(site.id, "GPS", lat, lon)
-                _checkInState.value = if (success) "checked_in" else "already_checked_in"
-            } else {
-                _checkInState.value = "too_far:${"%.0f".format(dist[0])}"
-            }
+            val success = passportRepo.checkIn(site.id, "GPS", lat, lon)
+            _checkInState.value = if (success) "checked_in" else "already_checked_in"
         }
     }
 
@@ -83,6 +80,37 @@ class SiteDetailViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             val success = passportRepo.checkIn(site.id, "QR")
             _checkInState.value = if (success) "checked_in" else "already_checked_in"
+        }
+    }
+
+    fun checkOut() {
+        val site = currentSite ?: return
+        viewModelScope.launch {
+            passportRepo.checkOut(site.id)
+            val checkIn = passportRepo.getCheckIn(site.id)
+            if (checkIn != null && checkIn.checkOutTime != null) {
+                val durationMs = checkIn.checkOutTime - checkIn.timestamp
+                val minutes = durationMs / 60000
+                _checkOutState.value = "checked_out:$minutes"
+            } else {
+                _checkOutState.value = "checked_out:0"
+            }
+        }
+    }
+
+    fun loadCheckInStatus() {
+        val site = currentSite ?: return
+        viewModelScope.launch {
+            val checkIn = passportRepo.getCheckIn(site.id)
+            if (checkIn != null) {
+                if (checkIn.checkOutTime != null) {
+                    val durationMs = checkIn.checkOutTime - checkIn.timestamp
+                    _checkInState.value = "already_checked_in"
+                    _checkOutState.value = "checked_out:${durationMs / 60000}"
+                } else {
+                    _checkInState.value = "already_checked_in"
+                }
+            }
         }
     }
 }

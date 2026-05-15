@@ -18,6 +18,9 @@ interface CheckInDao {
     @Insert
     suspend fun insert(checkIn: CheckIn): Long
 
+    @Query("UPDATE check_ins SET checkOutTime = :time WHERE siteId = :siteId AND checkOutTime IS NULL")
+    suspend fun checkOut(siteId: String, time: Long)
+
     @Query("SELECT COUNT(*) FROM check_ins")
     fun getTotalCheckIns(): Flow<Int>
 }

@@ -42,9 +42,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(15.0, 75.7), 6.5f))
-        map.setOnInfoWindowClickListener { marker ->
-            val siteId = marker.tag as? String ?: return@setOnInfoWindowClickListener
+        map.uiSettings.isZoomControlsEnabled = true
+        map.uiSettings.isMyLocationButtonEnabled = false
+        map.setOnMarkerClickListener { marker ->
+            val siteId = marker.tag as? String ?: return@setOnMarkerClickListener false
             startActivity(Intent(requireContext(), SiteDetailActivity::class.java).putExtra("site_id", siteId))
+            true
         }
         observeSites()
     }

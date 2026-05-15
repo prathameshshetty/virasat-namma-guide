@@ -89,7 +89,8 @@ class SiteDetailActivity : AppCompatActivity() {
                                 binding.tvDistrict.text = site.district
                                 binding.tvType.text = site.siteType.replaceFirstChar { it.uppercase() }
                                 binding.tvVisited.isVisible = site.isVisited
-                                binding.btnAudio.isEnabled = site.audioUrl.isNotEmpty()
+                                binding.btnAudio.isEnabled = true
+                                vm.loadCheckInStatus()
                             }
                             is UiState.Error -> {
                                 binding.progressBar.isVisible = false
@@ -100,12 +101,13 @@ class SiteDetailActivity : AppCompatActivity() {
                 }
                 launch {
                     vm.description.collect { desc ->
+                        binding.progressDesc.isVisible = false
                         if (desc.isNotEmpty()) {
                             binding.tvDescription.text = desc
                             binding.tvDescription.isVisible = true
-                            binding.progressDesc.isVisible = false
                         } else {
-                            binding.progressDesc.isVisible = true
+                            binding.tvDescription.text = "Ask Namma Guide a question below to learn about this site."
+                            binding.tvDescription.isVisible = true
                         }
                     }
                 }
@@ -116,12 +118,24 @@ class SiteDetailActivity : AppCompatActivity() {
                                 Toast.makeText(this@SiteDetailActivity, "Checked in! Stamp added to your passport.", Toast.LENGTH_LONG).show()
                                 binding.btnCheckin.text = "Visited ✓"
                                 binding.btnCheckin.isEnabled = false
+                                binding.btnCheckout.visibility = View.VISIBLE
                             }
-                            state == "already_checked_in" -> Toast.makeText(this@SiteDetailActivity, "You've already visited this site!", Toast.LENGTH_SHORT).show()
-                            state.startsWith("too_far") -> {
-                                val dist = state.split(":").getOrNull(1) ?: "?"
-                                Toast.makeText(this@SiteDetailActivity, "You are ${dist}m away. Come within 200m to check in.", Toast.LENGTH_LONG).show()
+                            state == "already_checked_in" -> {
+                                binding.btnCheckin.text = "Visited ✓"
+                                binding.btnCheckin.isEnabled = false
+                                binding.btnCheckout.visibility = View.VISIBLE
                             }
+                        }
+                    }
+                }
+                launch {
+                    vm.checkOutState.collect { state ->
+                        if (state.startsWith("checked_out")) {
+                            val minutes = state.split(":").getOrNull(1)?.toLongOrNull() ?: 0L
+                            val msg = if (minutes > 0) "Checked out! You spent $minutes minute(s) here." else "Checked out!"
+                            Toast.makeText(this@SiteDetailActivity, msg, Toast.LENGTH_LONG).show()
+                            binding.btnCheckout.text = "Checked Out ✓"
+                            binding.btnCheckout.isEnabled = false
                         }
                     }
                 }
@@ -158,13 +172,21 @@ class SiteDetailActivity : AppCompatActivity() {
     private fun setupAudioControls() {
         binding.btnAudio.setOnClickListener {
             val site = (vm.site.value as? UiState.Success)?.data ?: return@setOnClickListener
-            if (site.audioUrl.isEmpty()) {
-                Toast.makeText(this, "Audio not available for this site yet.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             if (audioBound) {
-                if (audioService?.isPlaying() == true) audioService?.pause()
-                else audioService?.playAudio(site.audioUrl, site.nameEn)
+                if (audioService?.isPlaying() == true) {
+                    audioService?.pause()
+                    binding.btnAudio.text = "▶ PLAY AUDIO"
+                } else {
+                    val audioText = "Welcome to ${site.nameEn}. " +
+                        "This is a ${site.siteType} located in ${site.district}, Karnataka. " +
+                        "It was built during the ${site.dynasty}, around ${site.period}. " +
+                        (if (binding.tvDescription.text.isNotEmpty() &&
+                            !binding.tvDescription.text.startsWith("Ask"))
+                            binding.tvDescription.text.toString()
+                        else "")
+                    audioService?.playAudio(audioText, site.nameEn)
+                    binding.btnAudio.text = "⏸ PAUSE AUDIO"
+                }
             }
         }
         binding.seekbarSpeed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -185,6 +207,9 @@ class SiteDetailActivity : AppCompatActivity() {
             } else {
                 locationPerm.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }
+        }
+        binding.btnCheckout.setOnClickListener {
+            vm.checkOut()
         }
     }
 

@@ -1,8 +1,11 @@
 package com.virasat.nammaguide.ui.scanner
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -21,13 +24,26 @@ class QRScannerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQrScannerBinding
     private var scanned = false
 
+    private val requestCamera = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        if (granted) startCamera()
+        else {
+            Toast.makeText(this, "Camera permission is required to scan QR codes", Toast.LENGTH_LONG).show()
+            finish()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQrScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "Scan QR Code"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        startCamera()
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            startCamera()
+        } else {
+            requestCamera.launch(Manifest.permission.CAMERA)
+        }
     }
 
     private fun startCamera() {
@@ -38,7 +54,9 @@ class QRScannerActivity : AppCompatActivity() {
                 it.setSurfaceProvider(binding.previewView.surfaceProvider)
             }
             val scanner = BarcodeScanning.getClient()
-            val analysis = ImageAnalysis.Builder().build().also { ia ->
+            val analysis = ImageAnalysis.Builder()
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                .build().also { ia ->
                 ia.setAnalyzer(Executors.newSingleThreadExecutor()) { imageProxy ->
                     val mediaImage = imageProxy.image
                     if (mediaImage != null && !scanned) {
@@ -50,7 +68,12 @@ class QRScannerActivity : AppCompatActivity() {
                                         scanned = true
                                         val siteId = value.removePrefix("virasat_")
                                         runOnUiThread {
-                                            startActivity(Intent(this, SiteDetailActivity::class.java).putExtra("site_id", siteId).putExtra("from_qr", true))
+                                            Toast.makeText(this, "Site found! Opening...", Toast.LENGTH_SHORT).show()
+                                            startActivity(
+                                                Intent(this, SiteDetailActivity::class.java)
+                                                    .putExtra("site_id", siteId)
+                                                    .putExtra("from_qr", true)
+                                            )
                                             finish()
                                         }
                                     }
@@ -63,7 +86,11 @@ class QRScannerActivity : AppCompatActivity() {
                 }
             }
             provider.unbindAll()
-            provider.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis)
+            try {
+                provider.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis)
+            } catch (e: Exception) {
+                Toast.makeText(this, "Failed to start camera: ${e.message}", Toast.LENGTH_LONG).show()
+            }
         }, ContextCompat.getMainExecutor(this))
     }
 

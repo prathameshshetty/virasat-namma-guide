@@ -21,5 +21,6 @@ data class CheckIn(
     val timestamp: Long,
     val method: String,
     val latitude: Double? = null,
-    val longitude: Double? = null
+    val longitude: Double? = null,
+    val checkOutTime: Long? = null
 )

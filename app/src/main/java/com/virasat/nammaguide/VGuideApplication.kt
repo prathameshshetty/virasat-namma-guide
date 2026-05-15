@@ -21,8 +21,8 @@ class VGuideApplication : Application() {
         val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
         val client = OkHttpClient.Builder()
             .addInterceptor(logging)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
             .build()
         Retrofit.Builder()
             .baseUrl("https://generativelanguage.googleapis.com/")
@@ -34,7 +34,7 @@ class VGuideApplication : Application() {
     val geminiService: GeminiApiService by lazy { retrofit.create(GeminiApiService::class.java) }
 
     val siteRepository: SiteRepository by lazy {
-        SiteRepository(database.heritageSiteDao(), database.aiQueryCacheDao(), geminiService, BuildConfig.GEMINI_API_KEY)
+        SiteRepository(database.heritageSiteDao(), database.aiQueryCacheDao(), geminiService, BuildConfig.GEMINI_API_KEY, BuildConfig.GEMINI_CHAT_API_KEY)
     }
 
     val passportRepository: PassportRepository by lazy {

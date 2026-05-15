@@ -20,4 +20,10 @@ class PassportRepository(
     }
 
     suspend fun hasCheckedIn(siteId: String) = checkInDao.hasCheckedIn(siteId)
+
+    suspend fun checkOut(siteId: String) {
+        checkInDao.checkOut(siteId, System.currentTimeMillis())
+    }
+
+    suspend fun getCheckIn(siteId: String): CheckIn? = checkInDao.getCheckInForSite(siteId)
 }

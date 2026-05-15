@@ -21,9 +21,10 @@ Karnataka is home to some of India's most extraordinary heritage — from the Vi
 | AI Heritage Guide | Ask any question about a site in English or Kannada; answers powered by Google Gemini with intelligent response caching |
 | Smart Site Discovery | Sites sorted by distance from your GPS location with real-time search |
 | Interactive Map | Google Maps with colour-coded markers — green = visited, red = unvisited |
-| QR Code Check-in | Scan site QR codes for instant check-in |
-| GPS Check-in | Validates physical presence within 200 m radius |
-| Audio Guide | Heritage commentary with adjustable playback speed (0.75× – 2×) |
+| QR Code Check-in | Scan site QR codes for instant check-in and automatic passport stamp |
+| GPS Check-in | One-tap GPS check-in from anywhere — no distance restriction |
+| Check-out | Record your departure time; visit duration shown on checkout |
+| Audio Guide | TTS heritage commentary with adjustable playback speed (0.75× – 2×) |
 | Digital Passport | Collect stamps for every site you visit; track your progress |
 | Multilingual | Full English and Kannada language support |
 | Offline-first | Room database caches site data and AI responses locally |
@@ -35,11 +36,11 @@ Karnataka is home to some of India's most extraordinary heritage — from the Vi
 
 | Home — Site List | Map View | Site Detail |
 |:---:|:---:|:---:|
-| ![Home](screenshots/home.png) | ![Map](screenshots/map.png) | ![Detail](screenshots/detail.png) |
+| ![Home](screenshots/home.png) | ![Map](screenshots/map.png) | ![Site Detail](screenshots/site_detail.png) |
 
-| AI Chat | Digital Passport | QR Scanner |
+| AI Chat | Digital Passport | Settings |
 |:---:|:---:|:---:|
-| ![Chat](screenshots/chat.png) | ![Passport](screenshots/passport.png) | ![Scanner](screenshots/scanner.png) |
+| ![Chat](screenshots/site_detail_chat.png) | ![Passport](screenshots/passport.png) | ![Settings](screenshots/settings.png) |
 
 ---
 
@@ -95,8 +96,11 @@ Edit `local.properties`:
 ```properties
 sdk.dir=/path/to/your/Android/Sdk
 GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_CHAT_API_KEY=your_second_gemini_api_key_here
 MAPS_API_KEY=your_google_maps_api_key_here
 ```
+
+> **Tip:** Create two separate API keys from [Google AI Studio](https://aistudio.google.com/app/apikey) — one for general use and one dedicated to AI chat — to maximise free-tier quota (30 RPM per key).
 
 > **Note:** `local.properties` is excluded from version control via `.gitignore` to keep API keys private.
 
@@ -249,7 +253,7 @@ When scanned with the in-app QR Scanner:
 3. `SiteDetailActivity` opens with `from_qr = true`
 4. A passport stamp is awarded automatically
 
-For GPS check-in, the app validates the user is within **200 metres** of the site coordinates before awarding the stamp.
+For GPS check-in, tap the **CHECK IN** button on any site detail page. After checking in, a **CHECK OUT** button appears — tap it when you leave to record your visit duration.
 
 ---
 

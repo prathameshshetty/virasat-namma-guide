@@ -154,17 +154,40 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Check-in button -->
-        <Button
-            android:id="@+id/btn_checkin"
+        <!-- Check-in / Check-out buttons -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_margin="12dp"
-            android:backgroundTint="@color/colorSecondary"
-            android:text="@string/btn_checkin"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btn_checkin"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/colorSecondary"
+                android:text="@string/btn_checkin"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_checkout"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="#E53935"
+                android:text="CHECK OUT"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
