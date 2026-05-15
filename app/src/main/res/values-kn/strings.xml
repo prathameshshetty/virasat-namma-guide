@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ವಿರಾಸತ್ – ನಮ್ಮ ಗೈಡ್</string>
+    <string name="nav_discover">ಅನ್ವೇಷಿಸಿ</string>
+    <string name="nav_map">ನಕ್ಷೆ</string>
+    <string name="nav_passport">ಪಾಸ್‌ಪೋರ್ಟ್</string>
+    <string name="nav_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+
+    <string name="search_hint">ಪರಂಪರೆ ತಾಣ ಹುಡುಕಿ…</string>
+    <string name="no_sites_found">ಯಾವ ತಾಣವೂ ಕಂಡುಬಂದಿಲ್ಲ</string>
+    <string name="scan_qr">QR ಸ್ಕ್ಯಾನ್</string>
+
+    <string name="site_dynasty">ರಾಜವಂಶ</string>
+    <string name="site_period">ಕಾಲ</string>
+    <string name="site_district">ಜಿಲ್ಲೆ</string>
+    <string name="site_type">ಪ್ರಕಾರ</string>
+    <string name="site_visited">✓ ಭೇಟಿ ನೀಡಲಾಗಿದೆ</string>
+    <string name="loading_description">AI ವಿವರಣೆ ತಯಾರಿಸಲಾಗುತ್ತಿದೆ…</string>
+
+    <string name="audio_guide">ಆಡಿಯೊ ಗೈಡ್</string>
+    <string name="btn_play_audio">▶ ಆಡಿಯೊ ಆಲಿಸಿ</string>
+    <string name="speed_label">ವೇಗ</string>
+
+    <string name="ai_guide_title">ನಮ್ಮ ಗೈಡ್‌ಗೆ ಕೇಳಿ</string>
+    <string name="ai_question_hint">ಈ ತಾಣದ ಬಗ್ಗೆ ಯಾವುದಾದರೂ ಕೇಳಿ…</string>
+    <string name="btn_send">ಕಳುಹಿಸಿ</string>
+
+    <string name="btn_checkin">ಇಲ್ಲಿ ಚೆಕ್-ಇನ್ ಮಾಡಿ</string>
+    <string name="checkin_success">ಚೆಕ್-ಇನ್ ಆಗಿದೆ! ಪಾಸ್‌ಪೋರ್ಟ್‌ಗೆ ಸ್ಟ್ಯಾಂಪ್ ಸೇರಿಸಲಾಗಿದೆ.</string>
+    <string name="already_checkedin">ನೀವು ಈಗಾಗಲೇ ಈ ತಾಣಕ್ಕೆ ಭೇಟಿ ನೀಡಿದ್ದೀರಿ!</string>
+
+    <string name="passport_title">ನನ್ನ ಪ್ರಯಾಣ ಪಾಸ್‌ಪೋರ್ಟ್</string>
+    <string name="stamps_count">ಸ್ಟ್ಯಾಂಪ್‌ಗಳು</string>
+    <string name="passport_empty">ಇನ್ನೂ ಭೇಟಿ ನೀಡಿಲ್ಲ. ಕರ್ನಾಟಕ ಅನ್ವೇಷಿಸಿ!</string>
+
+    <string name="settings_language">ಭಾಷೆ</string>
+    <string name="settings_kannada">ಕನ್ನಡ</string>
+    <string name="settings_english">English</string>
+    <string name="settings_about">ಕುರಿತು</string>
+    <string name="settings_version">ಆವೃತ್ತಿ</string>
+
+    <string name="qr_scan_instruction">ಸ್ಮಾರಕದ QR ಕೋಡ್‌ಗೆ ಕ್ಯಾಮೆರಾ ತೋರಿಸಿ</string>
+</resources>

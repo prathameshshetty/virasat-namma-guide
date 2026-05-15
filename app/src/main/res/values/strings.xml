@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Virasat – Namma Guide</string>
+    <string name="nav_discover">Discover</string>
+    <string name="nav_map">Map</string>
+    <string name="nav_passport">Passport</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="search_hint">Search heritage sites…</string>
+    <string name="no_sites_found">No sites found</string>
+    <string name="scan_qr">Scan QR</string>
+
+    <string name="site_dynasty">Dynasty</string>
+    <string name="site_period">Period</string>
+    <string name="site_district">District</string>
+    <string name="site_type">Type</string>
+    <string name="site_visited">✓ Visited</string>
+    <string name="loading_description">Generating AI description…</string>
+
+    <string name="audio_guide">Audio Guide</string>
+    <string name="btn_play_audio">▶ Play Audio</string>
+    <string name="speed_label">Speed</string>
+
+    <string name="ai_guide_title">Ask Namma Guide</string>
+    <string name="ai_question_hint">Ask anything about this site…</string>
+    <string name="btn_send">Send</string>
+
+    <string name="btn_checkin">Check In Here</string>
+    <string name="checkin_success">Checked in! Stamp added to your passport.</string>
+    <string name="already_checkedin">You have already visited this site!</string>
+
+    <string name="passport_title">My Travel Passport</string>
+    <string name="stamps_count">Stamps</string>
+    <string name="passport_empty">No visits yet. Go explore Karnataka!</string>
+
+    <string name="settings_language">Language</string>
+    <string name="settings_kannada">ಕನ್ನಡ</string>
+    <string name="settings_english">English</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+
+    <string name="qr_scan_instruction">Point camera at a monument QR code</string>
+</resources>

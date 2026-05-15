@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8B4513</color>
+    <color name="colorPrimaryDark">#5C2D0A</color>
+    <color name="colorPrimaryVariant">#A0522D</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#D4A017</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorBackground">#FFF8F0</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnBackground">#1C1B1F</color>
+    <color name="colorOnSurface">#1C1B1F</color>
+    <color name="colorVisited">#2E7D32</color>
+    <color name="colorChatUser">#8B4513</color>
+    <color name="colorChatAI">#F5E6D3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_light">#F5F5F5</color>
+</resources>
