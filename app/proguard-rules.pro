@@ -1,0 +1,2 @@
+-keep class com.virasat.nammaguide.data.model.** { *; }
+-keep class com.virasat.nammaguide.data.db.entity.** { *; }
