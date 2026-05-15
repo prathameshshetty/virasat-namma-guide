@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeFragment" android:icon="@drawable/ic_discover" android:title="@string/nav_discover" />
+    <item android:id="@+id/mapFragment" android:icon="@drawable/ic_map" android:title="@string/nav_map" />
+    <item android:id="@+id/passportFragment" android:icon="@drawable/ic_passport" android:title="@string/nav_passport" />
+    <item android:id="@+id/settingsFragment" android:icon="@drawable/ic_settings" android:title="@string/nav_settings" />
+</menu>
