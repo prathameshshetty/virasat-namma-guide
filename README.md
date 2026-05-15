@@ -1,4 +1,4 @@
-# NammaGuide — Karnataka Heritage Explorer
+# Virasat – Namma Guide
 
 > An AI-powered Android app that transforms how you discover, explore, and learn about Karnataka's ancient heritage sites.
 
@@ -78,8 +78,8 @@ Karnataka is home to some of India's most extraordinary heritage — from the Vi
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/nammaVi.git
-cd nammaVi
+git clone https://github.com/prathameshshetty/virasat-namma-guide.git
+cd virasat-namma-guide
 ```
 
 ### 2. Configure API Keys
@@ -286,7 +286,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5. Open a Pull Request at https://github.com/prathameshshetty/virasat-namma-guide
 
 ---
 
