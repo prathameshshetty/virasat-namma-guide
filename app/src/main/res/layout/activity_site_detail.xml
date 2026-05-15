@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="24dp"
+            android:visibility="gone" />
+
+        <!-- Header card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_name_en"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_name_kn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#FFCCBC"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_visited"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="#2E7D32"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/site_visited"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Info card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="@string/site_dynasty" android:textStyle="bold" android:textSize="14sp" android:textColor="@color/colorPrimary"/>
+                    <TextView android:id="@+id/tv_dynasty" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="@string/site_period" android:textStyle="bold" android:textSize="14sp" android:textColor="@color/colorPrimary"/>
+                    <TextView android:id="@+id/tv_period" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="@string/site_district" android:textStyle="bold" android:textSize="14sp" android:textColor="@color/colorPrimary"/>
+                    <TextView android:id="@+id/tv_district" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="14sp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="@string/site_type" android:textStyle="bold" android:textSize="14sp" android:textColor="@color/colorPrimary"/>
+                    <TextView android:id="@+id/tv_type" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="14sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Description -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <ProgressBar android:id="@+id/progress_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:visibility="visible"/>
+                <TextView android:id="@+id/tv_description" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="15sp" android:lineSpacingMultiplier="1.4" android:visibility="gone"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Audio Guide -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/audio_guide" android:textStyle="bold" android:textSize="16sp" android:textColor="@color/colorPrimary" android:layout_marginBottom="12dp"/>
+                <Button android:id="@+id/btn_audio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/btn_play_audio" android:backgroundTint="@color/colorPrimary" android:layout_marginBottom="12dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/speed_label" android:textSize="14sp" android:layout_marginEnd="8dp"/>
+                    <SeekBar android:id="@+id/seekbar_speed" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:max="3" android:progress="1"/>
+                    <TextView android:id="@+id/tv_speed" android:layout_width="40dp" android:layout_height="wrap_content" android:text="1.0x" android:gravity="end" android:textSize="14sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- AI Guide Chat -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ai_guide_title" android:textStyle="bold" android:textSize="16sp" android:textColor="@color/colorPrimary" android:layout_marginBottom="8dp"/>
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_chat" android:layout_width="match_parent" android:layout_height="200dp" android:layout_marginBottom="8dp"/>
+                <ProgressBar android:id="@+id/progress_ai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:visibility="gone"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <EditText android:id="@+id/et_question" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:hint="@string/ai_question_hint" android:inputType="text" android:maxLines="2"/>
+                    <Button android:id="@+id/btn_send" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/btn_send" android:backgroundTint="@color/colorPrimary" android:layout_marginStart="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Check-in button -->
+        <Button
+            android:id="@+id/btn_checkin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="12dp"
+            android:backgroundTint="@color/colorSecondary"
+            android:text="@string/btn_checkin"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
