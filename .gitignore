@@ -1,0 +1,30 @@
+# Android generated
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.aab
+
+# App build outputs
+app/build/
+
+# Gradle wrapper (keep gradlew but ignore caches)
+.gradle/
+
+# IntelliJ / Android Studio
+*.iws
+out/
+.idea/
+
+# Kotlin
+*.kotlin_module
+
+# OS
+Thumbs.db
