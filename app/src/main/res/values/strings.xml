@@ -37,7 +37,24 @@
     <string name="settings_kannada">ಕನ್ನಡ</string>
     <string name="settings_english">English</string>
     <string name="settings_about">About</string>
+    <string name="settings_about_subtitle">App info, features &amp; developer</string>
     <string name="settings_version">Version</string>
+
+    <string name="about_tagline">Discover Karnataka\'s Heritage</string>
+    <string name="about_section_about">About the App</string>
+    <string name="about_description">Virasat – Namma Guide is a GPS-powered heritage companion that brings Karnataka\'s ancient monuments, temples, forts, and cultural sites to life. Whether you\'re a history enthusiast, a traveller, or a curious local, Namma Guide helps you explore the rich legacy of the land.</string>
+    <string name="about_section_features">Features</string>
+    <string name="about_feature_gps">GPS-based discovery of nearby heritage sites</string>
+    <string name="about_feature_ai">AI-powered guide – ask anything about a site</string>
+    <string name="about_feature_audio">Audio guide with adjustable playback speed</string>
+    <string name="about_feature_passport">Travel passport with visit stamps</string>
+    <string name="about_feature_qr">QR code check-in at monuments</string>
+    <string name="about_section_tech">Built With</string>
+    <string name="about_tech_list">• Kotlin &amp; Android Jetpack\n• Google Maps &amp; Location Services\n• Gemini AI (Google)\n• ML Kit Barcode Scanning\n• Room Database\n• CameraX</string>
+    <string name="about_section_developer">Developer</string>
+    <string name="about_developer_info">Made with love for Karnataka\'s heritage by the Virasat team. This app is part of an initiative to make cultural history accessible to everyone.</string>
+    <string name="about_contact">prathamesh.cse@gmail.com</string>
+    <string name="about_footer">© 2025 Virasat. All rights reserved.</string>
 
     <string name="qr_scan_instruction">Point camera at a monument QR code</string>
 </resources>

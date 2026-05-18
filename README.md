@@ -34,13 +34,17 @@ Karnataka is home to some of India's most extraordinary heritage — from the Vi
 
 ## Screenshots
 
-| Home — Site List | Map View | Site Detail |
+| Home — Site List | Site Detail | GPS Check-in |
 |:---:|:---:|:---:|
-| ![Home](screenshots/home.png) | ![Map](screenshots/map.png) | ![Site Detail](screenshots/site_detail.png) |
+| ![Home](screenshots/home.png) | ![Site Detail](screenshots/site_detail.png) | ![GPS Check-in](screenshots/map.png) |
 
-| AI Chat | Digital Passport | Settings |
+| QR Scanner | Digital Passport | Settings |
 |:---:|:---:|:---:|
-| ![Chat](screenshots/site_detail_chat.png) | ![Passport](screenshots/passport.png) | ![Settings](screenshots/settings.png) |
+| ![QR Scanner](screenshots/scanner.png) | ![Passport](screenshots/passport.png) | ![Settings](screenshots/settings.png) |
+
+| About |
+|:---:|
+| ![About](screenshots/about.png) |
 
 ---
 

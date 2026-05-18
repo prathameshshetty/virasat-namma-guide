@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.virasat.nammaguide.BuildConfig
+import com.virasat.nammaguide.R
 import com.virasat.nammaguide.databinding.FragmentSettingsBinding
 import java.util.Locale
 
@@ -33,8 +36,11 @@ class SettingsFragment : Fragment() {
             setLocale(lang)
         }
 
-        binding.tvVersion.text = "Virasat – Namma Guide v1.0"
-        binding.tvAbout.text = "A GPS-based heritage guide for Karnataka's hidden treasures."
+        binding.tvVersion.text = "Virasat – Namma Guide v${BuildConfig.VERSION_NAME}"
+
+        binding.rowAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_settings_to_about)
+        }
     }
 
     private fun setLocale(lang: String) {
